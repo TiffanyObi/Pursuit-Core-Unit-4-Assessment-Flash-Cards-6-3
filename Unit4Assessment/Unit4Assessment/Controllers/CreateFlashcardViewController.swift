@@ -7,23 +7,32 @@
 //
 
 import UIKit
+import DataPersistence
 
 class CreateFlashcardViewController: UIViewController {
 
+    
+    public var dataPersistence: DataPersistence<Details>!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .purple
     }
     
 
-    /*
-    // MARK: - Navigation
+   
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+}
+
+extension CreateFlashcardViewController: DataPersistenceDelegate {
+    
+    func didSaveItem<T>(_ persistenceHelper: DataPersistence<T>, item: T) where T : Decodable, T : Encodable, T : Equatable {
+       
+        
     }
-    */
+    
+    func didDeleteItem<T>(_ persistenceHelper: DataPersistence<T>, item: T) where T : Decodable, T : Encodable, T : Equatable {
+     
+    }
 
 }

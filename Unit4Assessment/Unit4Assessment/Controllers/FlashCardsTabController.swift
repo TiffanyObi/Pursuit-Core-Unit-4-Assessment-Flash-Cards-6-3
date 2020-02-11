@@ -12,13 +12,13 @@ import DataPersistence
 class FlashCardsTabController: UITabBarController {
     
 
-//    private var dataPersistence = DataPersistence<Article>(filename: "savedArticles.plist")
+   private var dataPersistence = DataPersistence<Details>(filename: "savedFlashcard.plist")
 
     private lazy var  savedFlashcardVC: SavedFlashcardsViewController = {
         let viewController = SavedFlashcardsViewController()
-        
+        viewController.dataPersistence = dataPersistence
         viewController.tabBarItem = UITabBarItem(title: "Cards", image: UIImage(systemName: "text.quote"), tag: 0)
-//        viewController.dataPersistence = dataPersistence
+
         return viewController
         
     }()
@@ -26,8 +26,8 @@ class FlashCardsTabController: UITabBarController {
     private lazy var  createFlashcardVC: CreateFlashcardViewController = {
         let viewController = CreateFlashcardViewController()
         viewController.tabBarItem = UITabBarItem(title: "Create", image: UIImage(systemName: "square.and.pencil"), tag: 1)
-//        viewController.dataPersistence = dataPersistence
-//        viewController.dataPersistence.delegate = viewController
+        viewController.dataPersistence = dataPersistence
+        viewController.dataPersistence.delegate = viewController
         return viewController
         
     }()
@@ -35,6 +35,7 @@ class FlashCardsTabController: UITabBarController {
     private lazy var  searchFlashVC:SearchFlashcardsViewController = {
         let viewController = SearchFlashcardsViewController()
         viewController.tabBarItem = UITabBarItem(title: "Search", image: UIImage(systemName: "magnifyingglass"), tag: 2)
+            viewController.dataPersistence = dataPersistence
         return viewController
         
     }()

@@ -21,8 +21,3 @@ struct Details: Codable & Equatable{
 }
 
 
-struct CreatedFlashCard: Codable & Equatable {
-    let question: String
-    let answer: String
-    
-}

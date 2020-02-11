@@ -11,7 +11,7 @@ import NetworkHelper
 
 struct SearchFlashcardsAPIClient {
     
-  static func fetchTopStories(completion: @escaping (Result<[Details], AppError>) -> ()) {
+  static func getFlashcards(completion: @escaping (Result<[Details], AppError>) -> ()) {
     
     
     

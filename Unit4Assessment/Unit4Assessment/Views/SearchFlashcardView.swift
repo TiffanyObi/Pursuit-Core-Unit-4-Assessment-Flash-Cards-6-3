@@ -9,13 +9,46 @@
 import UIKit
 
 class SearchFlashcardView: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    
+    public lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.itemSize = CGSize(width: 100, height: 100)
+        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .systemTeal
+        return collectionView
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame:UIScreen.main.bounds)
+        commomInit()
     }
-    */
-
+    
+    required init?(coder: NSCoder) {
+        super.init(coder:coder)
+        commomInit()
+    }
+    
+    
+    private func commomInit() {
+        setupCollectionViewContraints()
+    }
+    
+    
+    
+    func setupCollectionViewContraints() {
+        addSubview(collectionView)
+        
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor)
+            
+            
+        ])
+    }
+    
 }

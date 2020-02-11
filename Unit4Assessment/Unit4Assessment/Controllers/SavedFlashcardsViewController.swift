@@ -7,21 +7,37 @@
 //
 
 import UIKit
+import DataPersistence
 
 class SavedFlashcardsViewController: UIViewController {
     
     private let savedFlashcardsView = SavedFlashcardView()
     
-    
+    private var savedFlashcards = [Details]() {
+        didSet {
+            
+            if savedFlashcards.isEmpty {
+                
+                savedFlashcardsView.collectionView.backgroundView = EmptyView(title: "Saved Flashcards", message: "There are currently no saved flashcards. Start browsing by tapping on the search icon.")
+                
+            } else {
+                
+                savedFlashcardsView.collectionView.backgroundView = nil
+            }
+            
+            savedFlashcardsView.collectionView.reloadData()
+        }
+    }
+    public var dataPersistence: DataPersistence<Details>!
     
     override func loadView() {
         super.loadView()
         view = savedFlashcardsView
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        loadSavedCards()
         view.backgroundColor = .yellow
         
         savedFlashcardsView.collectionView.dataSource = self
@@ -31,16 +47,27 @@ class SavedFlashcardsViewController: UIViewController {
         
     }
     
-
+    private func loadSavedCards() {
+        do {
+            savedFlashcards = try dataPersistence.loadItems()
+        } catch {
+            print("error finding articles")
+        }
+    }
+    
+    
+    
+    
 }
 
 extension SavedFlashcardsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        print(savedFlashcards.count)
+        return savedFlashcards.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "savedFlachcardCell", for: indexPath) as? SavedFlashcardCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "savedFlachcardCell", for: indexPath) as? SavedFlashcardCell else {
             fatalError("could not downcast to SavedFlashcardCell")
         }
         cell.backgroundColor = .green
