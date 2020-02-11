@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E2E4F4823F2FA1B009A816C /* FlashCardsTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2E4F4723F2FA1B009A816C /* FlashCardsTabController.swift */; };
+		3E2E4F4E23F2FB7C009A816C /* SavedFlashcardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2E4F4D23F2FB7C009A816C /* SavedFlashcardsViewController.swift */; };
+		3E2E4F5023F2FB99009A816C /* CreateFlashcardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2E4F4F23F2FB99009A816C /* CreateFlashcardViewController.swift */; };
+		3E2E4F5223F2FBC3009A816C /* SearchFlashcardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2E4F5123F2FBC3009A816C /* SearchFlashcardsViewController.swift */; };
 		5790239823F2EE39000AA216 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5790239723F2EE39000AA216 /* AppDelegate.swift */; };
 		5790239A23F2EE39000AA216 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5790239923F2EE39000AA216 /* SceneDelegate.swift */; };
-		5790239C23F2EE39000AA216 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5790239B23F2EE39000AA216 /* ViewController.swift */; };
-		5790239F23F2EE39000AA216 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5790239D23F2EE39000AA216 /* Main.storyboard */; };
 		579023A123F2EE3B000AA216 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 579023A023F2EE3B000AA216 /* Assets.xcassets */; };
 		579023A423F2EE3B000AA216 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 579023A223F2EE3B000AA216 /* LaunchScreen.storyboard */; };
 		579023AF23F2EE3B000AA216 /* Unit4AssessmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579023AE23F2EE3B000AA216 /* Unit4AssessmentTests.swift */; };
@@ -27,11 +29,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3E2E4F4723F2FA1B009A816C /* FlashCardsTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardsTabController.swift; sourceTree = "<group>"; };
+		3E2E4F4D23F2FB7C009A816C /* SavedFlashcardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedFlashcardsViewController.swift; sourceTree = "<group>"; };
+		3E2E4F4F23F2FB99009A816C /* CreateFlashcardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFlashcardViewController.swift; sourceTree = "<group>"; };
+		3E2E4F5123F2FBC3009A816C /* SearchFlashcardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFlashcardsViewController.swift; sourceTree = "<group>"; };
 		5790239423F2EE39000AA216 /* Unit4Assessment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unit4Assessment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5790239723F2EE39000AA216 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5790239923F2EE39000AA216 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5790239B23F2EE39000AA216 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		5790239E23F2EE39000AA216 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		579023A023F2EE3B000AA216 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		579023A323F2EE3B000AA216 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		579023A523F2EE3B000AA216 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -58,6 +62,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E2E4F4923F2FA52009A816C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5790239723F2EE39000AA216 /* AppDelegate.swift */,
+				5790239923F2EE39000AA216 /* SceneDelegate.swift */,
+				579023A023F2EE3B000AA216 /* Assets.xcassets */,
+				579023A223F2EE3B000AA216 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3E2E4F4A23F2FA70009A816C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3E2E4F4723F2FA1B009A816C /* FlashCardsTabController.swift */,
+				3E2E4F4D23F2FB7C009A816C /* SavedFlashcardsViewController.swift */,
+				3E2E4F4F23F2FB99009A816C /* CreateFlashcardViewController.swift */,
+				3E2E4F5123F2FBC3009A816C /* SearchFlashcardsViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		5790238B23F2EE39000AA216 = {
 			isa = PBXGroup;
 			children = (
@@ -79,12 +105,8 @@
 		5790239623F2EE39000AA216 /* Unit4Assessment */ = {
 			isa = PBXGroup;
 			children = (
-				5790239723F2EE39000AA216 /* AppDelegate.swift */,
-				5790239923F2EE39000AA216 /* SceneDelegate.swift */,
-				5790239B23F2EE39000AA216 /* ViewController.swift */,
-				5790239D23F2EE39000AA216 /* Main.storyboard */,
-				579023A023F2EE3B000AA216 /* Assets.xcassets */,
-				579023A223F2EE3B000AA216 /* LaunchScreen.storyboard */,
+				3E2E4F4A23F2FA70009A816C /* Controllers */,
+				3E2E4F4923F2FA52009A816C /* Supporting Files */,
 				579023A523F2EE3B000AA216 /* Info.plist */,
 			);
 			path = Unit4Assessment;
@@ -182,7 +204,6 @@
 			files = (
 				579023A423F2EE3B000AA216 /* LaunchScreen.storyboard in Resources */,
 				579023A123F2EE3B000AA216 /* Assets.xcassets in Resources */,
-				5790239F23F2EE39000AA216 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,9 +221,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5790239C23F2EE39000AA216 /* ViewController.swift in Sources */,
+				3E2E4F5023F2FB99009A816C /* CreateFlashcardViewController.swift in Sources */,
+				3E2E4F5223F2FBC3009A816C /* SearchFlashcardsViewController.swift in Sources */,
+				3E2E4F4823F2FA1B009A816C /* FlashCardsTabController.swift in Sources */,
 				5790239823F2EE39000AA216 /* AppDelegate.swift in Sources */,
 				5790239A23F2EE39000AA216 /* SceneDelegate.swift in Sources */,
+				3E2E4F4E23F2FB7C009A816C /* SavedFlashcardsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,14 +249,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		5790239D23F2EE39000AA216 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5790239E23F2EE39000AA216 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		579023A223F2EE3B000AA216 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -363,14 +379,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZEKMNK5YD3;
+				DEVELOPMENT_TEAM = 7NN4QS8KUX;
 				INFOPLIST_FILE = Unit4Assessment/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.alexcpaul.Unit4Assessment;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tiffanyobi.Unit4Assessment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -382,14 +398,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZEKMNK5YD3;
+				DEVELOPMENT_TEAM = 7NN4QS8KUX;
 				INFOPLIST_FILE = Unit4Assessment/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.alexcpaul.Unit4Assessment;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tiffanyobi.Unit4Assessment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
