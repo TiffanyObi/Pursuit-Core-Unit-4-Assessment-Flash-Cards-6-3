@@ -8,7 +8,17 @@
 
 import UIKit
 
+protocol AddNewCardDelegate: AnyObject {
+
+    func didSaveFlashcard(_ flashcard: Details)
+}
+
+
 class SearchFlashcardCell: UICollectionViewCell {
+    
+    weak var delegate: AddNewCardDelegate?
+    
+    private var currentFlashcard: Details!
     
     public lazy var questionLabel: UILabel = {
         let label = UILabel()
@@ -31,7 +41,7 @@ class SearchFlashcardCell: UICollectionViewCell {
         let button = UIButton()
         button.setImage(UIImage(systemName: "square.and.arrow.down.on.square.fill"), for: .normal)
         
-        // how do we set up a button programatically? (addTarget)
+        
         button.addTarget(self, action: #selector(addButtonPressed(_:)), for: .touchUpInside)
         return button
     }()
@@ -53,7 +63,8 @@ class SearchFlashcardCell: UICollectionViewCell {
 }
     
     @objc private func addButtonPressed(_ sender: UIButton) {
-//            print("button pressed")
+        print("addbutton pressed")
+        delegate?.didSaveFlashcard(currentFlashcard)
           }
     
     private func setUpAddButtonConstraints(){
@@ -83,7 +94,9 @@ class SearchFlashcardCell: UICollectionViewCell {
     }
     
     public func configureCell(for flashcard: Details) {
-        questionLabel.text = flashcard.cardTitle
+        currentFlashcard = flashcard
+        questionLabel.text = flashcard.quizTitle
+        answerTextfeild.text = flashcard.facts.description
     }
 
 }
