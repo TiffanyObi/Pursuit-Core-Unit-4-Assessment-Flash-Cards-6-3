@@ -37,7 +37,7 @@ class CreateFlashcardViewController: UIViewController {
         createFlashcardView.secondFactTextFeild.delegate = self
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(savedArticleButtonPressed))
-        navigationItem.rightBarButtonItem?.isEnabled = false
+        
        
 
     }
@@ -76,36 +76,18 @@ extension CreateFlashcardViewController: UITextFieldDelegate {
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
      
-       guard !(textField.text?.isEmpty ?? true) else {
-           
-           showAlert(title: "Error", message: "Fill all textFields")
-           return
-       }
-       
-    
         if textField.tag == 0 {
             
-            if question.count < 1 {
-                showAlert(title: "Error", message: "Fill all textFields")
-            }
-
             question = textField.text ?? "no question"
             
             
         } else if textField.tag == 1 {
             
-            if fact1.count < 1 {
-                showAlert(title: "Error", message: "Fill all textFields")
-            }
             
             
             fact1 = textField.text ?? "fact 1 "
            
         } else if textField.tag == 2 {
-            
-            if fact2.count < 1 {
-                showAlert(title: "Error", message: "Fill all textFields")
-            }
             
             
             fact2 = textField.text ?? "fact 2"
@@ -120,14 +102,14 @@ extension CreateFlashcardViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        navigationItem.rightBarButtonItem?.isEnabled = true
+//        navigationItem.rightBarButtonItem?.isEnabled = true
        
         return true
     }
     
    func reset() {
        
-        navigationItem.rightBarButtonItem?.isEnabled = false
+//        navigationItem.rightBarButtonItem?.isEnabled = false
         createFlashcardView.questionTitleTextFeild.isEnabled = true
         createFlashcardView.questionTitleTextFeild.text = ""
     question = ""
