@@ -12,6 +12,7 @@ import DataPersistence
 class SavedFlashcardsViewController: UIViewController {
     
     private let savedFlashcardsView = SavedFlashcardView()
+    public var currentCard: Details!
     
     private var savedFlashcards = [Details]() {
         didSet {
@@ -25,6 +26,7 @@ class SavedFlashcardsViewController: UIViewController {
                 savedFlashcardsView.collectionView.backgroundView = nil
             }
             
+            
             savedFlashcardsView.collectionView.reloadData()
         }
     }
@@ -33,6 +35,7 @@ class SavedFlashcardsViewController: UIViewController {
     override func loadView() {
         super.loadView()
         view = savedFlashcardsView
+        navigationItem.title = "My Flashcards"
     }
     
     override func viewDidLoad() {
@@ -71,7 +74,10 @@ extension SavedFlashcardsViewController: UICollectionViewDataSource {
             fatalError("could not downcast to SavedFlashcardCell")
         }
         cell.backgroundColor = .green
-        cell.congifureCell()
+        let cellinRow = savedFlashcards[indexPath.row]
+        cell.configureCell(for: cellinRow)
+        
+        cell.delegate = self
         return cell
     }
     
@@ -95,4 +101,71 @@ extension SavedFlashcardsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return  UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
+}
+
+extension SavedFlashcardsViewController: AddNewCardDelegate {
+    func didSaveFlashcard(_ flashcard: Details) {
+        
+    }
+    
+    
+}
+
+extension SavedFlashcardsViewController: SavedFlashCardDelegate {
+    func didSelectMoreButton(flashCard: Details) {
+        
+        print("didSelectMoreButton \(flashCard.quizTitle)")
+            
+            
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] alertAction in
+                
+                self?.deleteArticle(flashCard)
+                
+            }
+            
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            
+            alertController.addAction(deleteAction)
+            alertController.addAction(cancelAction)
+            present(alertController,animated: true)
+            
+            
+        }
+        
+        private func deleteArticle(_ card: Details){
+            
+            guard let index = savedFlashcards.firstIndex(of: card) else {
+                return
+            }
+            
+            
+            do {
+                
+                try dataPersistence.deleteItem(at: index)
+                
+               
+            } catch {
+                
+                print(error)
+            }
+            
+            
+    
+  }
+    }
+    
+    
+extension SavedFlashcardsViewController: DataPersistenceDelegate {
+    func didSaveItem<T>(_ persistenceHelper: DataPersistence<T>, item: T) where T : Decodable, T : Encodable, T : Equatable {
+        loadSavedCards()
+        
+    }
+    
+    func didDeleteItem<T>(_ persistenceHelper: DataPersistence<T>, item: T) where T : Decodable, T : Encodable, T : Equatable {
+        loadSavedCards()
+    }
+
 }

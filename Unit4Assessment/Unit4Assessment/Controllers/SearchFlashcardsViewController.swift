@@ -9,6 +9,8 @@
 import UIKit
 import DataPersistence
 
+
+
 class SearchFlashcardsViewController: UIViewController {
     
     private let searchFlashcardView = SearchFlashcardView()
@@ -39,24 +41,14 @@ class SearchFlashcardsViewController: UIViewController {
         searchFlashcardView.collectionView.delegate  = self
         
         searchFlashcardView.collectionView.register(SearchFlashcardCell.self, forCellWithReuseIdentifier: "searchCardCell")
+        
+        navigationItem.title = "Search Flashcards"
     }
     
     func loadFlashcards() {
         
-        SearchFlashcardsAPIClient.getFlashcards { [weak self] (result) in
-            switch result {
-                
-            case .failure(let error):
-            print(" error- \(error)")
-                
-            case .success(let flashcards):
-                
-                DispatchQueue.main.async {
-                    self?.cards = flashcards
-                }
-                
-            }
-        }
+        cards = Details.getFlashcards()
+       
     }
     
 
@@ -75,6 +67,7 @@ extension SearchFlashcardsViewController: UICollectionViewDataSource {
         
         let cellInRow = cards[indexPath.row]
         cell.backgroundColor = .systemGray5
+        cell.delegate = self
         cell.configureCell(for: cellInRow)
         
         return cell
@@ -100,4 +93,32 @@ extension SearchFlashcardsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return  UIEdgeInsets(top: 40, left: 40, bottom: 40, right: 40)
     }
+}
+
+
+
+extension SearchFlashcardsViewController: AddNewCardDelegate {
+    
+    
+    func didSaveFlashcard(_ _flashcard: Details) {
+        
+        do {
+            
+            if dataPersistence.hasItemBeenSaved(_flashcard) {
+                
+                showAlert(title: "Item is already saved", message: "Please select another flashcard.")
+                
+            } else {
+                
+                try dataPersistence.createItem(_flashcard)
+            }
+           
+        } catch {
+            print(error)
+        }
+        
+        showAlert(title: "Awesome!", message: "Your flashcard has been saved")
+    }
+    
+    
 }

@@ -17,6 +17,7 @@ class FlashCardsTabController: UITabBarController {
     private lazy var  savedFlashcardVC: SavedFlashcardsViewController = {
         let viewController = SavedFlashcardsViewController()
         viewController.dataPersistence = dataPersistence
+        viewController.dataPersistence.delegate = viewController
         viewController.tabBarItem = UITabBarItem(title: "Cards", image: UIImage(systemName: "text.quote"), tag: 0)
 
         return viewController
@@ -27,7 +28,7 @@ class FlashCardsTabController: UITabBarController {
         let viewController = CreateFlashcardViewController()
         viewController.tabBarItem = UITabBarItem(title: "Create", image: UIImage(systemName: "square.and.pencil"), tag: 1)
         viewController.dataPersistence = dataPersistence
-        viewController.dataPersistence.delegate = viewController
+        
         return viewController
         
     }()
