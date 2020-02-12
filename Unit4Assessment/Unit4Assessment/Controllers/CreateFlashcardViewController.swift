@@ -93,17 +93,14 @@ extension CreateFlashcardViewController: UITextFieldDelegate {
             fact2 = textField.text ?? "fact 2"
             
         }
-        
-        
-        
+
     
-    }
+}
     
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-//        navigationItem.rightBarButtonItem?.isEnabled = true
-       
+
         return true
     }
     
