@@ -31,6 +31,8 @@ class SearchFlashcardsViewController: UIViewController {
         
         view = searchFlashcardView
     }
+    
+    var isShowing = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +44,7 @@ class SearchFlashcardsViewController: UIViewController {
         
         searchFlashcardView.collectionView.register(SearchFlashcardCell.self, forCellWithReuseIdentifier: "searchCardCell")
         
+       
         navigationItem.title = "Search Flashcards"
     }
     
@@ -68,10 +71,13 @@ extension SearchFlashcardsViewController: UICollectionViewDataSource {
         let cellInRow = cards[indexPath.row]
         cell.backgroundColor = .systemGray5
         cell.delegate = self
+       
         cell.configureCell(for: cellInRow)
         
         return cell
     }
+    
+
     
     
     

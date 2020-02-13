@@ -58,7 +58,7 @@ class SavedFlashcardCell: UICollectionViewCell {
         textView.isEditable = false
         textView.isSelectable = false
         textView.textAlignment = .center
-        textView.backgroundColor = .systemGreen
+        textView.backgroundColor = .systemGroupedBackground
         return textView
     }()
     
@@ -77,7 +77,6 @@ class SavedFlashcardCell: UICollectionViewCell {
         setUpQuestionLabelConstraints()
         setUpAnswerTextViewConstraints()
         animate()
-        
         addGestureRecognizer(longPressGesture)
     }
     
@@ -91,11 +90,13 @@ class SavedFlashcardCell: UICollectionViewCell {
 
     @objc private func didLongPress(_ gesture: UILongPressGestureRecognizer) {
         
+        
         if gesture.state == .began {
             gesture.state = .ended
             
              isShowingAnswer.toggle()
         }
+        
         animate()
         
        
@@ -181,6 +182,7 @@ class SavedFlashcardCell: UICollectionViewCell {
         currentCard = flashcard
         
         questionLabel.text = flashcard.quizTitle
+        
         answerTextView.text = String(flashcard.facts.description.dropFirst(2).dropLast(2))
     }
     
